@@ -10,10 +10,10 @@ const MovieList = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       let url = "";
-      if (category === "now-playing") url = "https://api.themoviedb.org/3/movie/now_playing";
-      else if (category === "popular") url = "https://api.themoviedb.org/3/movie/popular";
-      else if (category === "top-rated") url = "https://api.themoviedb.org/3/movie/top_rated";
-      else if (category === "up-coming") url = "https://api.themoviedb.org/3/movie/upcoming";
+      if (category === "now-playing") url = `${import.meta.env.VITE_MOVIE_API_URL}/movie/now_playing`;
+      else if (category === "popular") url = `${import.meta.env.VITE_MOVIE_API_URL}/movie/popular`;
+      else if (category === "top-rated") url = `${import.meta.env.VITE_MOVIE_API_URL}/movie/top_rated`;
+      else if (category === "up-coming") url = `${import.meta.env.VITE_MOVIE_API_URL}/movie/upcoming`;
 
       const options = {
         method: "GET",
@@ -21,7 +21,7 @@ const MovieList = () => {
         params: { language: "ko", page: "1" },
         headers: {
           accept: "application/json",
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MmFjMmNiYjIwMzc1MDM1MjI1MDZjMTRkODFmYjA5OSIsIm5iZiI6MTcyOTE1ODE4Mi43NzY2NjEsInN1YiI6IjY3MDUxMjk4YmQ3Y2Q4NmRhNTFkNDk4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zw58j7Kvp4nSa4dgneq4D3U484OvQt9bgmjhYw37QJg",
+          Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
         },
       };
 
